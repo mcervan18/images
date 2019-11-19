@@ -29,7 +29,7 @@ imshow(im)
 
 feat_spacing_x = round(linspace(1,length_image,n_feat_x+2)) ; 
 feat_spacing_y = round(linspace(1,width_image,n_feat_y+2)) ; 
-feat_size = round(linspace(20, 80, 6)) ; 
+feat_size = round(linspace(40, 80, 6)) ; 
 
 %% Dots 
 
@@ -61,16 +61,16 @@ imshow(im)
 
 for i = 1:5 
     for j = 1:3 
-        square_x = feat_spacing_x(2*i+1) - feat_size(i)/2  ; 
-        square_y = feat_spacing_y(j+1) - feat_size(i)/2; 
-        square_dx = square_x + feat_size(i) ; 
-        square_dy = square_y + feat_size(i) ; 
-        im(square_y:square_dy , square_x:square_dx, 1:3) = 0 ; 
+        square_x = feat_spacing_x(2*i+1) ; 
+        square_y = feat_spacing_y(j+1) ; 
+        square_dx = square_x + feat_size(j) ; 
+        square_dy = square_y + feat_size(j) ; 
+        im(square_x:square_dx, square_y:square_dy, 1:3) = 0 ; 
+        figure 
+        imshow(im) 
     end 
 end 
 
-figure 
-imshow(im) 
 
 %% Dots
 
@@ -136,7 +136,7 @@ end
 imshow(im) 
 
 %%
-imwrite(im, 'pattern_test_long.png') 
+% imwrite(im, 'pattern_test_4.png') 
 
 %% testing algorithms 
 
@@ -148,7 +148,7 @@ Ibw = imbinarize(bw_image,graythresh(bw_image));
 % Iarea = bwareaopen(Ifill,100);
 % Ifinal = bwlabel(Iarea);
 stat = regionprops(Ibw,'boundingbox');
-[centers, radii] = imfindcircles(Ibw, [10 50]) ; 
+[centers, radii] = imfindcircles(Ibw, [50 120]) ; 
 
 imshow(im); hold on;
 viscircles(centers, radii, 'edgecolor', 'c') ; 

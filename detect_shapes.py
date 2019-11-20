@@ -1,19 +1,9 @@
 # import the necessary packages
 from shapedetector import ShapeDetector
-# import argparse
 import imutils
 import cv2
-import numpy as np
 
-# construct the argument parse and parse the arguments
-# ap = argparse.ArgumentParser()
-# ap.add_argument("-i", "--image", required=True,
-#                 help="path to the input image")
-# args = vars(ap.parse_args())
 
-# load the image and resize it to a smaller factor so that
-# the shapes can be approximated better
-# image = cv2.imread(args["image"])
 image = cv2.imread('pattern_test.png')
 resized = imutils.resize(image, width=500)
 ratio = image.shape[0] / float(resized.shape[0])
@@ -25,10 +15,10 @@ blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
 
 
-# find contours in the thresholded image and initialize the
+# find contours in the threshold image and initialize the
 # shape detector
 cnts = cv2.findContours(thresh.copy(), cv2.RETR_TREE,
-                        cv2.CHAIN_APPROX_SIMPLE)
+                        cv2.CHAIN_APPROX_NONE)
 cnts = imutils.grab_contours(cnts)
 sd = ShapeDetector()
 
@@ -51,6 +41,9 @@ for c in cnts:
                 0.5, (255, 0, 0), 2)
 
     # show the output image
-    # cv2.imshow("Image", image)
-    # cv2.waitKey(0)
+    cv2.imwrite("detected_shapes.png", image)
+    cv2.imshow("Results", image)
+    cv2.waitKey(0)
+
+
 

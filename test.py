@@ -1,4 +1,3 @@
-# testing stuff 
 from PIL import Image 
 
 import os 

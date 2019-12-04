@@ -38,4 +38,3 @@ class ShapeDetector:
 
         # return the name of the shape
         return shape
-

@@ -10,10 +10,14 @@ class ColorLabeler:
         # initialize the colors dictionary, containing the color
         # name as the key and the RGB tuple as the value
         colors = OrderedDict({
-            "white":(255,255,255),
+            "white": (255, 255, 255),
             "red": (255, 0, 0),
             "green": (0, 255, 0),
-            "blue": (0, 0, 255)})
+            "blue": (0, 0, 255),
+            "teal": (0, 255, 255),
+            "pink": (255, 0, 255),
+            "yellow": (255, 255, 0)
+            })
 
         # allocate memory for the L*a*b* image, then initialize
         # the color names list
@@ -55,7 +59,6 @@ class ColorLabeler:
         # return the name of the color with the smallest distance
         return self.colorNames[minDist[1]]
 
-
     def label(self, image, c):
         # construct a mask for the contour, then compute the
         # average L*a*b* value for the masked region
@@ -80,4 +83,3 @@ class ColorLabeler:
 
         # return the name of the color with the smallest distance
         return self.colorNames[minDist[1]]
-

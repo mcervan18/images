@@ -4,10 +4,10 @@ import cv2
 
 class ShapeDetector:
     def __init__(self):
-        # pass
-        shapes = ["triangle", "square", "rectangle", "pentagon", "circle"]
-        self.shapeNames = []
-        self.shapeNames = shapes
+        pass
+        # self.shapes = ["triangle", "square", "rectangle", "pentagon", "circle"]
+        # self.shapeNames = []
+        # self.shapeNames = shapes
 
     def detect(self, c):
         # initialize the shape name and approximate the contour
@@ -17,8 +17,8 @@ class ShapeDetector:
 
         # if the shape is a triangle, it will have 3 vertices
         if len(approx) == 3:
-            # shape = "triangle"
-            shape = shapes[0]
+            shape = "triangle"
+            # shape = self.shapes[0]
 
         # if the shape has 4 vertices, it is either a square or
         # a rectangle
@@ -30,16 +30,14 @@ class ShapeDetector:
 
             # a square will have an aspect ratio that is approximately
             # equal to one, otherwise, the shape is a rectangle
-            # shape = "square" if ar >= 0.95 and ar <= 1.05 else "rectangle"
-            shape = shapes[1] if ar >= 0.95 and ar <= 1.05 else (shapes[2])
-
+            shape = "square" if 0.95 <= ar <= 1.05 else "rectangle"
         # if the shape is a pentagon, it will have 5 vertices
         elif len(approx) == 5:
-            # shape = "pentagon"
-            shape = shapes[3]
+            shape = "pentagon"
+            # shape = self.shapes[3]
         # otherwise, we assume the shape is a circle
         else:
-            # shape = "circle"
-            shape = shapes[4]
+            shape = "circle"
+            # shape = self.shapes[4]
         # return the name of the shape
         return shape

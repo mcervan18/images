@@ -16,7 +16,8 @@ class ColorLabeler:
             "blue": (0, 0, 255),
             "teal": (0, 255, 255),
             "pink": (255, 0, 255),
-            "yellow": (255, 255, 0)
+            "yellow": (255, 255, 0),
+            "black": (0, 0, 0)
             })
 
         # allocate memory for the L*a*b* image, then initialize
